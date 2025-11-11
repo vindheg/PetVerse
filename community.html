@@ -354,74 +354,45 @@
     }
 
     // ========== AI CHAT FUNCTION ==========
-    async function askAI() {
-    const input = document.getElementById('aiInput');
-    const userQuestion = input.value.trim();
-    
-    if (!userQuestion) return;
-    
-    // Add user message to chat
-    addAIMessage(userQuestion, true);
-    
-    // Show typing indicator
-    const aiMessages = document.getElementById('aiMessages');
-    const typingIndicator = document.createElement('div');
-    typingIndicator.className = 'message ai';
-    typingIndicator.id = 'typingIndicator';
-    typingIndicator.innerHTML = `<strong>Pet AI:</strong> <em>Thinking...</em>`;
-    aiMessages.appendChild(typingIndicator);
-    aiMessages.scrollTop = aiMessages.scrollHeight;
-    
-    // Disable input while processing
-    input.disabled = true;
-    
-    try {
-        // Call your backend AI API
-        const response = await fetch('/api/ai-chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ message: userQuestion })
-        });
+    function askAI() {
+        const input = document.getElementById('aiInput');
+        const userQuestion = input.value.trim();
         
-        // Remove typing indicator
-        const typingElement = document.getElementById('typingIndicator');
-        if (typingElement) typingElement.remove();
+        if (!userQuestion) return;
         
-        if (response.ok) {
-            const data = await response.json();
-            addAIMessage(data.response, false);
-        } else {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'API request failed');
+        addAIMessage(userQuestion, true);
+        
+        // Find relevant response
+        let response = aiKnowledgeBase.default;
+        const userQuestionLower = userQuestion.toLowerCase();
+        
+        // Check for keywords in the question
+        const keywords = Object.keys(aiKnowledgeBase);
+        for (const keyword of keywords) {
+            if (userQuestionLower.includes(keyword) && keyword !== 'default') {
+                response = aiKnowledgeBase[keyword];
+                break;
+            }
         }
         
-    } catch (error) {
-        console.error('AI Error:', error);
-        
-        // Remove typing indicator if still exists
-        const typingElement = document.getElementById('typingIndicator');
-        if (typingElement) typingElement.remove();
-        
-        // Show appropriate error message
-        let errorMessage = "I'm having trouble connecting right now. Please try again in a moment!";
-        
-        if (error.message.includes('not configured')) {
-            errorMessage = "AI assistant is currently being upgraded. Please check back soon!";
-        } else if (error.message.includes('AI service error')) {
-            errorMessage = "The AI service is temporarily unavailable. Please try again later.";
+        // Special cases for common questions
+        if (userQuestionLower.includes('hello') || userQuestionLower.includes('hi')) {
+            response = "Hello! I'm your Pet AI Assistant. I can help with pet care advice, training tips, health questions, behavior issues, and general pet parenting guidance. What would you like to know about your pet?";
+        } else if (userQuestionLower.includes('thank')) {
+            response = "You're welcome! I'm here to help with all your pet care questions. Don't hesitate to ask if you need more information or have other concerns about your furry friend!";
+        } else if (userQuestionLower.includes('cost') || userQuestionLower.includes('price') || userQuestionLower.includes('expensive')) {
+            response = aiKnowledgeBase.cost;
+        } else if (userQuestionLower.includes('vet') || userQuestionLower.includes('doctor')) {
+            response = "Regular veterinary care is essential for your pet's health. Annual check-ups, vaccinations, dental care, and preventive treatments are important. For specific medical concerns, always consult your veterinarian directly.";
         }
         
-        addAIMessage(errorMessage, false);
-    } finally {
-        // Re-enable input
-        input.disabled = false;
-        input.focus();
+        // AI response with slight delay for natural feel
+        setTimeout(() => {
+            addAIMessage(response, false);
+        }, 800);
+        
+        input.value = '';
     }
-    
-    input.value = '';
-}
 
     // ========== COMMUNITY FUNCTIONS ==========
     function sendMessage() {

@@ -31,6 +31,27 @@ class Adoption(db.Model):
     pet_id = db.Column(db.Integer, db.ForeignKey('pet.id'))
     pet_name = db.Column(db.String(50))
 
+class CommunityPost(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String(50))
+    title = db.Column(db.String(200))
+    content = db.Column(db.Text)
+    created_at = db.Column(db.DateTime, default=db.func.now())
+
+class LostFoundReport(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_name = db.Column(db.String(50))
+    report_type = db.Column(db.String(10))
+    pet_name = db.Column(db.String(50))
+    pet_type = db.Column(db.String(30))
+    breed = db.Column(db.String(50))
+    color = db.Column(db.String(50))
+    location = db.Column(db.String(200))
+    date = db.Column(db.String(20))
+    contact_phone = db.Column(db.String(20))
+    description = db.Column(db.Text)
+    created_at = db.Column(db.DateTime, default=db.func.now())
+
 # Serve HTML files from root directory
 @app.route('/')
 def serve_index():
@@ -42,17 +63,14 @@ def serve_pages(page):
         return send_from_directory('../', page)
     return "Page not found", 404
 
-# Serve CSS files
 @app.route('/style.css')
 def serve_css():
     return send_from_directory('../', 'style.css')
 
-# Serve JS files
 @app.route('/script.js')
 def serve_js():
     return send_from_directory('../', 'script.js')
 
-# Serve static images from server/static folder
 @app.route('/static/images/<path:filename>')
 def serve_static_images(filename):
     return send_from_directory('static/images', filename)
@@ -94,7 +112,6 @@ def adopt_pet():
         if pet.adopted:
             return jsonify({"error": "Pet already adopted"}), 400
 
-        # Mark pet as adopted and create adoption record
         pet.adopted = True
         adoption = Adoption(
             user_name=user_name, 
@@ -123,12 +140,10 @@ def get_adoptions():
         if not user_name:
             return jsonify({"error": "Username is required"}), 400
 
-        # Get all adoptions for the user
         adoptions = Adoption.query.filter_by(user_name=user_name).all()
         
         adoption_list = []
         for adoption in adoptions:
-            # Get pet details
             pet = Pet.query.get(adoption.pet_id)
             
             adoption_data = {
@@ -149,16 +164,11 @@ def get_adoptions():
 @app.route('/api/reset', methods=['POST'])
 def reset_database():
     try:
-        # Clear all adoptions and reset pets to not adopted
         Adoption.query.delete()
-        
-        # Reset all pets to not adopted
         pets = Pet.query.all()
         for pet in pets:
             pet.adopted = False
-        
         db.session.commit()
-        
         return jsonify({
             "message": "Database reset successfully! All pets are available for adoption again.",
             "pets_reset": len(pets)
@@ -168,29 +178,6 @@ def reset_database():
         db.session.rollback()
         return jsonify({"error": f"Reset failed: {str(e)}"}), 500
 
-# Add these models for new features
-class CommunityPost(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_name = db.Column(db.String(50))
-    title = db.Column(db.String(200))
-    content = db.Column(db.Text)
-    created_at = db.Column(db.DateTime, default=db.func.now())
-
-class LostFoundReport(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_name = db.Column(db.String(50))
-    report_type = db.Column(db.String(10))  # 'lost' or 'found'
-    pet_name = db.Column(db.String(50))
-    pet_type = db.Column(db.String(30))
-    breed = db.Column(db.String(50))
-    color = db.Column(db.String(50))
-    location = db.Column(db.String(200))
-    date = db.Column(db.String(20))
-    contact_phone = db.Column(db.String(20))
-    description = db.Column(db.Text)
-    created_at = db.Column(db.DateTime, default=db.func.now())
-
-# Add these routes
 @app.route('/api/community/posts', methods=['GET', 'POST'])
 def community_posts():
     if request.method == 'POST':
@@ -257,7 +244,6 @@ def lost_found_reports():
     ]
     return jsonify(report_list)
 
-# Add these routes to your app.py
 @app.route('/volunteer')
 def volunteer_page():
     return send_from_directory('../', 'volunteer.html')
@@ -269,72 +255,19 @@ def donate_page():
 @app.route('/api/init', methods=['GET'])
 def init_data():
     try:
-        # Create all tables
         db.create_all()
-        
-        # Clear existing data
         Pet.query.delete()
         Adoption.query.delete()
         db.session.commit()
 
-        # Add sample pets
         pets = [
-            Pet(
-                name="Bruno", 
-                type="Dog", 
-                age=3, 
-                description="Friendly and loyal golden retriever who loves playing fetch",
-                image="bruno.webp",
-                adopted=False
-            ),
-            Pet(
-                name="Chintu", 
-                type="Cat", 
-                age=2, 
-                description="Playful and curious tabby cat who enjoys cuddles and chasing toys",
-                image="chintu.webp",
-                adopted=False
-            ),
-            Pet(
-                name="Coco", 
-                type="Bird", 
-                age=1, 
-                description="Talkative and cheerful parrot that loves to sing and mimic sounds",
-                image="coco.webp",
-                adopted=False
-            ),
-            Pet(
-                name="Rocky", 
-                type="Rabbit", 
-                age=1, 
-                description="Gentle rabbit who loves carrots and hopping around in the garden",
-                image="rocky.webp",
-                adopted=False
-            ),
-            Pet(
-                name="Tommy", 
-                type="Dog", 
-                age=4, 
-                description="Energetic and loving labrador, great with children and other pets",
-                image="tommy.webp",
-                adopted=False
-            ),
-            Pet(
-                name="Milo", 
-                type="Cat", 
-                age=3, 
-                description="Independent and sweet siamese cat who enjoys quiet evenings",
-                image="milo.webp",
-                adopted=False
-            ),
-            Pet(
-                name="Soni", 
-                type="Rabbit", 
-                age=2, 
-                description="Soft and cuddly dwarf rabbit, perfect for first-time pet owners",
-                image="soni.webp",
-                adopted=False
-            )
+            Pet(name="Bruno", type="Dog", age=3, description="Friendly and loyal golden retriever", image="bruno.webp", adopted=False),
+            Pet(name="Chintu", type="Cat", age=2, description="Playful and curious tabby cat", image="chintu.webp", adopted=False),
+            Pet(name="Coco", type="Bird", age=1, description="Talkative and cheerful parrot", image="coco.webp", adopted=False),
+            Pet(name="Rocky", type="Rabbit", age=1, description="Gentle rabbit who loves carrots", image="rocky.webp", adopted=False),
+            Pet(name="Tommy", type="Dog", age=4, description="Energetic and loving labrador", image="tommy.webp", adopted=False),
+            Pet(name="Milo", type="Cat", age=3, description="Independent and sweet siamese cat", image="milo.webp", adopted=False),
+            Pet(name="Soni", type="Rabbit", age=2, description="Soft and cuddly dwarf rabbit", image="soni.webp", adopted=False)
         ]
 
         db.session.add_all(pets)
@@ -352,4 +285,7 @@ def init_data():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True, port=5000)
+    
+    # Production configuration
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=False)
