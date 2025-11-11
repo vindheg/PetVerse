@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Adopt a Pet</title>
-  <link rel="stylesheet" href="/style.css">
-</head>
+  <meta charset="UTF-8">
+    <title data-i18n="adopt_title">Adopt a Pet</title>
+  <link rel="stylesheet" href="/style.css">
+  </head>
 <body>
-  <h1>Adoption Request Form</h1>
-  
-  <form id="adoptForm">
-    <label for="name">Your Name:</label>
-    <input type="text" id="name" name="name" required><br><br>
+    <h1 data-i18n="adopt_form_title">Adoption Request Form</h1>
+  
+  <form id="adoptForm">
+    <label for="name" data-i18n="your_name">Your Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
 
-    <label for="email">Your Email:</label>
-    <input type="email" id="email" name="email" required><br><br>
+    <label for="email" data-i18n="your_email">Your Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
 
-    <label for="petId">Pet ID:</label>
-    <input type="number" id="petId" name="petId" required><br><br>
+    <label for="petId" data-i18n="pet_id">Pet ID:</label>
+    <input type="number" id="petId" name="petId" required><br><br>
 
-    <button type="submit">Submit Request</button>
-  </form>
+    <button type="submit" data-i18n="submit_request">Submit Request</button>
+  </form>
 
-  <p id="message"></p>
+  <p id="message"></p>
 
-  <script>
-    document.getElementById('adoptForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
+    <script>
+    document.getElementById('adoptForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const petId = document.getElementById('petId').value;
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const petId = document.getElementById('petId').value;
 
-      // FIXED: Using relative path
-      const response = await fetch('/api/adopt', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ name, email, petId })
-      });
+      // FIXED: Using relative path
+      const response = await fetch('/api/adopt', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ name, email, petId })
+      });
 
-      const data = await response.json();
-      document.getElementById('message').innerText = data.message || 'Request sent!';
-    });
-  </script>
+      const data = await response.json();
+      document.getElementById('message').innerText = data.message || 'Request sent!';
+    });
+  </script>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/auth.js"></script>
+
+  <script src="/translations.js"></script>
+
 </body>
 </html>
