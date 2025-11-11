@@ -1,228 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Donate | PetVerse</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/style.css">
-  <script src="/translations.js"></script>
-  <script src="/auth.js"></script>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate | PetVerse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">PetVerse 🐾</div>
-    <ul>
-        <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-        <li><a href="pets.html" data-i18n="nav_adopt">Adopt</a></li>
-        <li><a href="volunteer.html" data-i18n="nav_volunteer">Volunteer</a></li>
-        <li><a href="donate.html" data-i18n="nav_donate">Donate</a></li>
-        <li><a href="community.html" data-i18n="nav_community">Community</a></li>
-        <li><a href="lost-found.html" data-i18n="nav_lost_found">Lost & Found</a></li>
-        <li><a href="login.html" id="loginLink" data-i18n="nav_login">Login / Signup</a></li>
-        <li><a href="myadoptions.html" data-i18n="nav_my_adoptions">My Adoptions</a></li>
-        <li id="logoutItem" style="display: none;">
-            <a href="javascript:void(0)" id="logoutLink" style="color: var(--secondary);" data-i18n="nav_logout">Logout</a>
-        </li>
-        <li>
-            <select id="languageSelect" onchange="changeLanguage(this.value)" style="background: var(--primary-light); color: white; border: none; padding: 0.5rem; border-radius: var(--radius);">
-                <option value="en">English</option>
-                <option value="hi">हिन्दी</option>
-                <option value="kn">ಕನ್ನಡ</option>
-            </select>
-        </li>
-    </ul>
+  <nav class="navbar">
+    <div class="logo">PetVerse 🐾</div>
+    <ul>
+        <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+        <li><a href="pets.html" data-i18n="nav_adopt">Adopt</a></li>
+        <li><a href="volunteer.html" data-i18n="nav_volunteer">Volunteer</a></li>
+        <li><a href="donate.html" data-i18n="nav_donate">Donate</a></li>
+        <li><a href="community.html" data-i18n="nav_community">Community</a></li>
+        <li><a href="lost-found.html" data-i18n="nav_lost_found">Lost & Found</a></li>
+        <li><a href="login.html" id="loginLink" data-i18n="nav_login">Login / Signup</a></li>
+        <li><a href="myadoptions.html" data-i18n="nav_my_adoptions">My Adoptions</a></li>
+        <li id="logoutItem" style="display: none;">
+            <a href="javascript:void(0)" id="logoutLink" style="color: var(--secondary);" data-i18n="nav_logout">Logout</a>
+        </li>
+        <li>
+            <select id="languageSelect" onchange="changeLanguage(this.value)" style="background: var(--primary-light); color: white; border: none; padding: 0.5rem; border-radius: var(--radius);">
+                <option value="en">English</option>
+                <option value="hi">हिन्दी</option>
+                <option value="kn">ಕನ್ನಡ</option>
+            </select>
+        </li>
+    </ul>
 </nav>
-  <div class="hero">
-    <h1>Support Our Mission</h1>
-    <p>Your donation helps us provide care and find forever homes for animals in need</p>
-  </div>
+  <div class="hero">
+        <h1 data-i18n="donate_page_title">Support Our Mission</h1>
+    <p data-i18n="donate_page_subtitle">Your donation helps us provide care and find forever homes for animals in need</p>
+  </div>
 
-  <div class="donate-container" style="max-width: 800px; margin: 2rem auto; padding: 2rem;">
-    <div class="donation-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
-      <div style="background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center;">
-        <div style="font-size: 2rem; margin-bottom: 1rem;">💰</div>
-        <h3 style="color: var(--primary); margin-bottom: 1rem;">One-time Donation</h3>
-        <p style="color: var(--text-light); margin-bottom: 1.5rem;">Make a single donation to support our immediate needs</p>
-        <button onclick="showDonationForm('one-time')" style="background: var(--primary); color: var(--white); border: none; padding: 0.8rem 1.5rem; border-radius: var(--radius); font-weight: 600; cursor: pointer;">Donate Now</button>
-      </div>
+  <div class="donate-container" style="max-width: 800px; margin: 2rem auto; padding: 2rem;">
+    <div class="donation-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+      <div style="background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">💰</div>
+        <h3 style="color: var(--primary); margin-bottom: 1rem;" data-i18n="one_time_donation">One-time Donation</h3>
+        <p style="color: var(--text-light); margin-bottom: 1.5rem;" data-i18n="one_time_desc">Make a single donation to support our immediate needs</p>
+        <button onclick="showDonationForm('one-time')" style="background: var(--primary); color: var(--white); border: none; padding: 0.8rem 1.5rem; border-radius: var(--radius); font-weight: 600; cursor: pointer;" data-i18n="donate_now">Donate Now</button>
+      </div>
+      
+      <div style="background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center;">
+        <div style="font-size: 2rem; margin-bottom: 1rem;">📅</div>
+        <h3 style="color: var(--primary); margin-bottom: 1rem;" data-i18n="monthly_support">Monthly Support</h3>
+        <p style="color: var(--text-light); margin-bottom: 1.5rem;" data-i18n="monthly_desc">Become a monthly donor and provide consistent support</p>
+        <button onclick="showDonationForm('monthly')" style="background: var(--primary); color: var(--white); border: none; padding: 0.8rem 1.5rem; border-radius: var(--radius); font-weight: 600; cursor: pointer;" data-i18n="monthly_giving">Monthly Giving</button>
+      </div>
+    </div>
+
+    <div id="donationForm" style="background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); display: none;">
+      <h2 style="color: var(--primary); margin-bottom: 1.5rem;" id="formTitle" data-i18n="make_donation">Make a Donation</h2>
+      <form id="donateForm">
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; margin-bottom: 0.5rem; color: var(--text); font-weight: 500;" data-i18n="donation_amount">Donation Amount</label>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button type="button" class="amount-btn" data-amount="25">$25</button>
+            <button type="button" class="amount-btn" data-amount="50">$50</button>
+            <button type="button" class="amount-btn" data-amount="100">$100</button>
+            <button type="button" class="amount-btn" data-amount="250">$250</button>
+            <input type="number" id="customAmount" placeholder="Custom amount" data-i18n="custom_amount" style="flex: 1; padding: 0.8rem; border: 2px solid var(--primary-light); border-radius: var(--radius); min-width: 120px;">
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; margin-bottom: 0.5rem; color: var(--text); font-weight: 500;" data-i18n="full_name">Full Name</label>
+          <input type="text" style="width: 100%; padding: 0.8rem; border: 2px solid var(--primary-light); border-radius: var(--radius);" required>
+        </div>
+        
+        <div style="margin-bottom: 1rem;">
+          <label style="display: block; margin-bottom: 0.5rem; color: var(--text); font-weight: 500;" data-i18n="email">Email</label>
+          <input type="email" style="width: 100%; padding: 0.8rem; border: 2px solid var(--primary-light); border-radius: var(--radius);" required>
+        </div>
+        
+        <button type="submit" style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: var(--white); border: none; padding: 1rem 2rem; border-radius: var(--radius); font-weight: 600; cursor: pointer; width: 100%;" data-i18n="complete_donation">
+          Complete Donation
+        </button>
+      </form>
+    </div>
+  </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+    // This function is unique to donate.html, so we KEEP it.
+    function showDonationForm(type) {
+      const user = localStorage.getItem("petpal_user");
+      if (!user) {
+        // This now calls the GLOBAL showToast() from auth.js
+        showToast("Please login to make a donation"); 
+        return;
+      }
+
+      const form = document.getElementById('donationForm');
+      const title = document.getElementById('formTitle');
       
-      <div style="background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); text-align: center;">
-        <div style="font-size: 2rem; margin-bottom: 1rem;">📅</div>
-        <h3 style="color: var(--primary); margin-bottom: 1rem;">Monthly Support</h3>
-        <p style="color: var(--text-light); margin-bottom: 1.5rem;">Become a monthly donor and provide consistent support</p>
-        <button onclick="showDonationForm('monthly')" style="background: var(--primary); color: var(--white); border: none; padding: 0.8rem 1.5rem; border-radius: var(--radius); font-weight: 600; cursor: pointer;">Monthly Giving</button>
-      </div>
-    </div>
+      // Get the current language to set the title text correctly
+      const lang = localStorage.getItem('preferred_language') || 'en';
+      
+      if (type === 'monthly') {
+        title.textContent = translations[lang]['monthly_support'] || 'Become a Monthly Supporter';
+  D   } else {
+        title.textContent = translations[lang]['make_donation'] || 'Make a One-time Donation';
+      }
+      
+      form.style.display = 'block';
+      form.scrollIntoView({ behavior: 'smooth' });
+    }
 
-    <div id="donationForm" style="background: var(--white); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); display: none;">
-      <h2 style="color: var(--primary); margin-bottom: 1.5rem;" id="formTitle">Make a Donation</h2>
-      <form id="donateForm">
-        <div style="margin-bottom: 1.5rem;">
-          <label style="display: block; margin-bottom: 0.5rem; color: var(--text); font-weight: 500;">Donation Amount</label>
-          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <button type="button" class="amount-btn" data-amount="25">$25</button>
-            <button type="button" class="amount-btn" data-amount="50">$50</button>
-            <button type="button" class="amount-btn" data-amount="100">$100</button>
-            <button type="button" class="amount-btn" data-amount="250">$250</button>
-            <input type="number" id="customAmount" placeholder="Custom amount" style="flex: 1; padding: 0.8rem; border: 2px solid var(--primary-light); border-radius: var(--radius); min-width: 120px;">
-          </div>
-        </div>
-        
-        <div style="margin-bottom: 1rem;">
-          <label style="display: block; margin-bottom: 0.5rem; color: var(--text); font-weight: 500;">Full Name</label>
-          <input type="text" style="width: 100%; padding: 0.8rem; border: 2px solid var(--primary-light); border-radius: var(--radius);" required>
-        </div>
-        
-        <div style="margin-bottom: 1rem;">
-          <label style="display: block; margin-bottom: 0.5rem; color: var(--text); font-weight: 500;">Email</label>
-          <input type="email" style="width: 100%; padding: 0.8rem; border: 2px solid var(--primary-light); border-radius: var(--radius);" required>
-        </div>
-        
-        <button type="submit" style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: var(--white); border: none; padding: 1rem 2rem; border-radius: var(--radius); font-weight: 600; cursor: pointer; width: 100%;">
-          Complete Donation
-        </button>
-      </form>
-    </div>
-  </div>
+    // This logic is unique to donate.html, so we KEEP it.
+    document.querySelectorAll('.amount-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.amount-btn').forEach(b => b.style.background = '');
+        this.style.background = 'var(--primary-light)';
+        this.style.color = 'var(--white)';
+        document.getElementById('customAmount').value = this.dataset.amount;
+      });
+    });
 
-  <div id="toast" class="toast"></div>
+    // This logic is unique to donate.html, so we KEEP it.
+    document.getElementById('donateForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const user = localStorage.getItem("petpal_user");
+      
+      if (!user) {
+        // This now calls the GLOBAL showToast() from auth.js
+        showToast("Please login to complete donation");
+        return;
+      }
+      
+      showToast("Thank you for your generous donation! 🐾");
+      this.reset();
+      document.getElementById('donationForm').style.display = 'none';
+    });
+  </script>
 
-  <script>
-    // Update login link based on user state
-    function updateLoginLink() {
-      const user = localStorage.getItem("petpal_user");
-      const loginLink = document.getElementById("loginLink");
-      if (user) {
-        loginLink.innerHTML = `Welcome, ${user} 👋`;
-        loginLink.style.color = "var(--accent)";
-        loginLink.href = "javascript:void(0)";
-        loginLink.onclick = () => {
-          showToast(`Already logged in as ${user}`);
-        };
-      }
-    }
+  <style>
+    /* Page-specific styles are fine to keep here */
+    .amount-btn {
+      background: var(--background);
+      border: 2px solid var(--primary-light);
+      color: var(--text);
+      padding: 0.8rem 1.2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-    function showToast(message) {
-      const toast = document.getElementById("toast");
-      toast.innerText = message;
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 3000);
-    }
-
-    function showDonationForm(type) {
-      const user = localStorage.getItem("petpal_user");
-      if (!user) {
-        showToast("Please login to make a donation");
-        return;
-      }
-
-      const form = document.getElementById('donationForm');
-      const title = document.getElementById('formTitle');
-      
-      if (type === 'monthly') {
-        title.textContent = 'Become a Monthly Supporter';
-      } else {
-        title.textContent = 'Make a One-time Donation';
-      }
-      
-      form.style.display = 'block';
-      form.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Amount button functionality
-    document.querySelectorAll('.amount-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.amount-btn').forEach(b => b.style.background = '');
-        this.style.background = 'var(--primary-light)';
-        this.style.color = 'var(--white)';
-        document.getElementById('customAmount').value = this.dataset.amount;
-      });
-    });
-
-    document.getElementById('donateForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const user = localStorage.getItem("petpal_user");
-      
-      if (!user) {
-        showToast("Please login to complete donation");
-        return;
-      }
-      
-      showToast("Thank you for your generous donation! 🐾");
-      this.reset();
-      document.getElementById('donationForm').style.display = 'none';
-    });
-
-    document.addEventListener('DOMContentLoaded', updateLoginLink);
-  </script>
-
-  <style>
-    .amount-btn {
-      background: var(--background);
-      border: 2px solid var(--primary-light);
-      color: var(--text);
-      padding: 0.8rem 1.2rem;
-      border-radius: var(--radius);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .amount-btn:hover {
-      background: var(--primary-light);
-      color: var(--white);
-    }
-  </style>
-  <!-- Include these in ALL pages -->
-<script src="/header.js"></script>
-<script src="/translations.js"></script>
-<div id="toast" class="toast"></div>
-
-<script>
-// Temporary fix - add this to every page until you create the separate files
-function updateAuthLinks() {
-    const user = localStorage.getItem("petpal_user");
-    const loginLink = document.getElementById("loginLink");
-    const logoutItem = document.getElementById("logoutItem");
-    const logoutLink = document.getElementById("logoutLink");
-
-    if (user && loginLink) {
-        loginLink.innerHTML = `Welcome, ${user} 👋`;
-        loginLink.style.color = "var(--accent)";
-        loginLink.href = "javascript:void(0)";
-        loginLink.onclick = () => showToast(`Already logged in as ${user}`);
-        
-        if (logoutItem && logoutLink) {
-            logoutItem.style.display = "block";
-            logoutLink.onclick = logout;
-        }
-    }
-}
-
-function logout() {
-    const user = localStorage.getItem("petpal_user");
-    localStorage.removeItem("petpal_user");
-    showToast(`Goodbye, ${user}! You have been logged out.`);
-    setTimeout(() => window.location.href = "index.html", 1500);
-}
-
-function showToast(message) {
-    let toast = document.getElementById("toast");
-    if (!toast) {
-        toast = document.createElement("div");
-        toast.id = "toast";
-        toast.className = "toast";
-        document.body.appendChild(toast);
-    }
-    toast.innerText = message;
-    toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 3000);
-}
-
-document.addEventListener('DOMContentLoaded', updateAuthLinks);
-</script>
-<div id="toast" class="toast"></div>
+    .amount-btn:hover {
+      background: var(--primary-light);
+    D   color: var(--white);
+    }
+  </style>
+  
+  <script src="/auth.js"></script>
+  <script src="/translations.js"></script>
 
 </body>
 </html>
