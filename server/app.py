@@ -52,17 +52,6 @@ class LostFoundReport(db.Model):
     description = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=db.func.now())
 
-# Auto-create tables and sample data
-@app.before_first_request
-def initialize_database():
-    try:
-        db.create_all()
-        # Add sample pets if database is empty
-        if Pet.query.count() == 0:
-            init_sample_data()
-    except Exception as e:
-        print(f"Database initialization error: {e}")
-
 def init_sample_data():
     """Initialize sample pets"""
     try:
@@ -80,6 +69,17 @@ def init_sample_data():
         print("Sample pets added successfully")
     except Exception as e:
         print(f"Error adding sample data: {e}")
+
+# Auto-create tables and sample data - FIXED for newer Flask versions
+with app.app_context():
+    try:
+        db.create_all()
+        # Add sample pets if database is empty
+        if Pet.query.count() == 0:
+            init_sample_data()
+            print("Database initialized with sample data")
+    except Exception as e:
+        print(f"Database initialization error: {e}")
 
 # Serve HTML files from root directory
 @app.route('/')
@@ -338,9 +338,6 @@ def api_health():
         }), 500
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-    
     # Production configuration
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=False)
