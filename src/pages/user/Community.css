@@ -1,0 +1,316 @@
+/* =========================================
+   COMMUNITY PAGE - "Whiskers" Theme
+   ========================================= */
+
+:root {
+  --comm-primary: #C07E60;       /* Terra Cotta */
+  --comm-primary-dark: #A0644B;
+  --comm-bg: #FAF9F6;            /* Warm Cream */
+  --comm-text: #333;
+  --comm-border: #E5E7EB;
+  --alert-red: #E74C3C;
+}
+
+.page-container {
+  background-color: var(--comm-bg);
+  min-height: 100vh;
+  padding-bottom: 4rem;
+}
+
+/* --- HERO --- */
+.community-hero-simple {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: white;
+  border-bottom: 1px solid var(--comm-border);
+  margin-bottom: 2rem;
+}
+
+.community-hero-simple h1 {
+  font-family: var(--font-serif); /* Uses your global serif font */
+  color: var(--comm-text);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.community-hero-simple p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* --- MAIN LAYOUT --- */
+.community-main-layout {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: var(--comm-text);
+  margin-bottom: 1.5rem;
+  border-left: 5px solid var(--comm-primary);
+  padding-left: 1rem;
+  font-family: var(--font-serif);
+}
+
+/* --- 1. CREATE POST SECTION --- */
+.create-post-wrapper {
+  margin-bottom: 3rem;
+}
+
+.create-post-card, .login-prompt-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  border: 1px solid var(--comm-border);
+}
+
+.create-post-card h3, .login-prompt-card h3 {
+  margin-bottom: 1rem;
+  color: var(--comm-text);
+  font-size: 1.1rem;
+}
+
+.whiskers-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #DDD;
+  border-radius: 8px;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 1rem;
+  background: #FAFAFA;
+}
+
+.whiskers-textarea:focus {
+  outline: none;
+  border-color: var(--comm-primary);
+  background: white;
+}
+
+.create-post-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.whiskers-btn-primary {
+  background-color: var(--comm-primary);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.whiskers-btn-primary:hover {
+  background-color: var(--comm-primary-dark);
+  transform: translateY(-1px);
+}
+
+.whiskers-btn-outline {
+  display: inline-block;
+  border: 2px solid var(--comm-primary);
+  color: var(--comm-primary);
+  padding: 8px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* --- 2. LOST PET ALERTS (Redesigned Grid) --- */
+.lost-pets-section {
+  margin-bottom: 3rem;
+}
+
+.lost-pets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.lost-pet-card-modern {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  border: 1px solid #FFEBEB; /* Slight red tint border */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.lost-pet-card-modern:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.lost-badge {
+  background: var(--alert-red);
+  color: white;
+  text-align: center;
+  padding: 4px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.lost-card-content {
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.lost-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.lost-header h4 {
+  font-size: 1.2rem;
+  color: var(--comm-text);
+  margin: 0;
+  font-weight: 700;
+}
+
+.lost-date {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.lost-details-grid {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.detail-item { margin-bottom: 4px; }
+.detail-item .label { font-weight: 600; color: #333; }
+
+.lost-desc {
+  font-style: italic;
+  color: #666;
+  font-size: 0.9rem;
+  background: #FAFAFA;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.lost-image-wrapper {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: #EEE;
+}
+
+.lost-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.lost-contact-box {
+  margin-top: auto;
+  background: #FFF4F4; /* Light red bg */
+  color: var(--alert-red);
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.9rem;
+  border: 1px solid #FFDCDC;
+  word-break: break-all;
+}
+
+/* --- 3. COMMUNITY POSTS (Clean List Style) --- */
+.posts-feed-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.discussion-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  border: 1px solid var(--comm-border);
+}
+
+.discussion-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+
+.avatar-circle {
+  width: 45px;
+  height: 45px;
+  background-color: var(--comm-primary); /* Terra Cotta */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.discussion-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.discussion-author {
+  font-weight: 700;
+  color: var(--comm-text);
+  font-size: 1rem;
+}
+
+.discussion-time {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.discussion-body {
+  color: #444;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Loading Spinner */
+.spinner-whiskers {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--comm-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  color: var(--comm-primary);
+}

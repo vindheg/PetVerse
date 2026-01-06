@@ -1,0 +1,486 @@
+setLoading(true);
+
+try {
+  const result = await login(formData.email, formData.password);
+
+  if (result.success) {
+    showToast('Welcome back! 🐾', 'success');
+
+    // Redirect based on tab selection or user role
+    if (activeTab === 'admin' || result.isAdmin) {
+      navigate('/admin/dashboard');
+    } else {
+      navigate('/');
+    }
+  }
+} catch (error) {
+  showToast(error.message || 'Login failed', 'error');
+} finally {
+  setLoading(false);
+}
+  };
+
+// SEND OTP
+const handleSendOTP = async (e) => {
+  e.preventDefault();
+
+  if (!formData.email) {
+    showToast('Please enter your email', 'error');
+    return;
+  }
+
+  setLoading(true);
+  try {
+    const { error } = await supabase.auth.signInWithOtp({
+      email: formData.email,
+      options: {
+        shouldCreateUser: true,
+      }
+    });
+
+    if (error) throw error;
+
+    setOtpSent(true);
+    showToast('OTP sent to your email! Check your inbox 📧', 'success');
+  } catch (error) {
+    showToast(error.message || 'Failed to send OTP', 'error');
+  } finally {
+    setLoading(false);
+  }
+};
+
+// VERIFY OTP & CREATE ACCOUNT
+const handleVerifyOTP = async (e) => {
+  e.preventDefault();
+
+  if (!formData.otp || formData.otp.length !== 6) {
+    showToast('Please enter the 6-digit OTP', 'error');
+    return;
+  }
+
+  setLoading(true);
+  try {
+    const { data, error } = await supabase.auth.verifyOtp({
+      email: formData.email,
+      token: formData.otp,
+      type: 'email'
+    });
+
+    if (error) throw error;
+
+    if (data?.user) {
+      // OTP verified, move to password step
+      setSignupStep(2);
+      showToast('Email verified! Now set your password', 'success');
+    }
+  } catch (error) {
+    showToast(error.message || 'Invalid OTP', 'error');
+  } finally {
+    setLoading(false);
+  }
+};
+
+// CREATE ACCOUNT WITH PASSWORD
+const handleCreateAccount = async (e) => {
+  e.preventDefault();
+
+  if (formData.password.length < 6) {
+    showToast('Password must be at least 6 characters', 'error');
+    return;
+  }
+
+  if (formData.password !== formData.confirmPassword) {
+    showToast('Passwords do not match', 'error');
+    return;
+  }
+
+  setLoading(true);
+  try {
+    const { error } = await supabase.auth.updateUser({
+      password: formData.password
+    });
+
+    if (error) throw error;
+
+    setSignupStep(3);
+    showToast('Account created successfully! 🎉', 'success');
+
+    // Auto-redirect after 2 seconds
+    setTimeout(() => {
+      setView('login');
+      setSignupStep(1);
+      setOtpSent(false);
+      setFormData({ email: '', password: '', confirmPassword: '', otp: '' });
+    }, 2000);
+  } catch (error) {
+    showToast(error.message || 'Failed to create account', 'error');
+  } finally {
+    setLoading(false);
+  }
+};
+
+// RESET PASSWORD HANDLER
+const handleResetPassword = async (e) => {
+  e.preventDefault();
+
+  if (!formData.email) {
+    showToast('Please enter your email', 'error');
+    return;
+  }
+
+  setLoading(true);
+  try {
+    const { error } = await supabase.auth.resetPasswordForEmail(formData.email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+
+    if (error) throw error;
+
+    showToast('Password reset link sent to your email!', 'success');
+    setTimeout(() => {
+      setView('login');
+      setFormData({ email: '', password: '', confirmPassword: '', otp: '' });
+    }, 2000);
+  } catch (error) {
+    showToast(error.message || 'Failed to send reset link', 'error');
+  } finally {
+    setLoading(false);
+  }
+};
+
+return (
+  <div className="login-page">
+    <div className="login-container-new">
+
+      {/* LEFT PANEL - Branding */}
+      <div className="login-brand-panel">
+        <div className="brand-content">
+          <h1 className="brand-logo">🐾 PetVerse</h1>
+          <p className="brand-tagline">Where every paw print tells a story</p>
+          <div className="brand-features">
+            <div className="feature-item">
+              <span className="feature-icon">❤️</span>
+              <span>Adopt loving companions</span>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">🏠</span>
+              <span>Find forever homes</span>
+            </div>
+            <div className="feature-item">
+              <span className="feature-icon">🤝</span>
+              <span>Join our community</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* RIGHT PANEL - Forms */}
+      <div className="login-form-panel">
+
+        {/* LOGIN VIEW */}
+        {view === 'login' && (
+          <div className="form-container">
+            <h2 className="form-title">Welcome Back</h2>
+            <p className="form-subtitle">Sign in to continue your journey</p>
+
+            {/* TABS */}
+            <div className="login-tabs">
+              <button
+                className={`tab-btn ${activeTab === 'user' ? 'active' : ''}`}
+                onClick={() => setActiveTab('user')}
+              >
+                <span className="tab-icon">👤</span>
+                User Login
+              </button>
+              <button
+                className={`tab-btn ${activeTab === 'admin' ? 'active' : ''}`}
+                onClick={() => setActiveTab('admin')}
+              >
+                <span className="tab-icon">🛡️</span>
+                Admin Login
+              </button>
+            </div>
+
+            {/* ADMIN NOTICE */}
+            {activeTab === 'admin' && (
+              <div className="admin-notice">
+                <span className="notice-icon">🔒</span>
+                <span>Secure admin access only</span>
+              </div>
+            )}
+
+            <form onSubmit={handleLogin}>
+              <div className="form-group-new">
+                <label>Email Address</label>
+                <div className="input-wrapper">
+                  <span className="input-icon">📧</span>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder={activeTab === 'admin' ? 'admin@petverse.com' : 'your@email.com'}
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="form-group-new">
+                <label>Password</label>
+                <div className="input-wrapper">
+                  <span className="input-icon">🔐</span>
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    name="password"
+                    placeholder="Enter your password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="toggle-password"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? '👁️' : '👁️‍🗨️'}
+                  </button>
+                </div>
+              </div>
+
+              <button type="submit" className="btn-primary-new" disabled={loading}>
+                {loading ? 'Signing In...' : activeTab === 'admin' ? 'Login as Admin' : 'Sign In'}
+              </button>
+            </form>
+
+            {/* BOTTOM LINKS (only for user) */}
+            {activeTab === 'user' && (
+              <div className="form-footer">
+                <button
+                  className="link-btn"
+                  onClick={() => {
+                    setView('signup');
+                    setFormData({ email: '', password: '', confirmPassword: '', otp: '' });
+                  }}
+                >
+                  Create Account
+                </button>
+                <button
+                  className="link-btn secondary"
+                  onClick={() => {
+                    setView('reset');
+                    setFormData({ email: '', password: '', confirmPassword: '', otp: '' });
+                  }}
+                >
+                  Forgot Password?
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* SIGNUP VIEW */}
+        {view === 'signup' && (
+          <div className="form-container">
+            <h2 className="form-title">Create Account</h2>
+            <p className="form-subtitle">Join the PetVerse community</p>
+
+            {/* PROGRESS INDICATOR */}
+            <div className="progress-steps">
+              <div className={`step ${signupStep >= 1 ? 'active' : ''}`}>
+                <div className="step-circle">1</div>
+                <span>Verify Email</span>
+              </div>
+              <div className={`step ${signupStep >= 2 ? 'active' : ''}`}>
+                <div className="step-circle">2</div>
+                <span>Set Password</span>
+              </div>
+              <div className={`step ${signupStep >= 3 ? 'active' : ''}`}>
+                <div className="step-circle">3</div>
+                <span>Done</span>
+              </div>
+            </div>
+
+            {/* STEP 1: Email & OTP */}
+            {signupStep === 1 && (
+              <form onSubmit={otpSent ? handleVerifyOTP : handleSendOTP}>
+                <div className="form-group-new">
+                  <label>Email Address</label>
+                  <div className="input-wrapper">
+                    <span className="input-icon">📧</span>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="your@email.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      disabled={otpSent}
+                    />
+                  </div>
+                </div>
+
+                {!otpSent && (
+                  <button type="submit" className="btn-primary-new" disabled={loading}>
+                    {loading ? 'Sending...' : 'Send OTP'}
+                  </button>
+                )}
+
+                {otpSent && (
+                  <>
+                    <div className="form-group-new">
+                      <label>Enter OTP</label>
+                      <div className="input-wrapper">
+                        <span className="input-icon">🔢</span>
+                        <input
+                          type="text"
+                          name="otp"
+                          placeholder="Enter 6-digit code"
+                          value={formData.otp}
+                          onChange={handleChange}
+                          maxLength={6}
+                          className="otp-input"
+                          required
+                        />
+                      </div>
+                      <p className="helper-text">We've sent a verification code to {formData.email}</p>
+                    </div>
+
+                    <button type="submit" className="btn-primary-new" disabled={loading}>
+                      {loading ? 'Verifying...' : 'Verify & Continue'}
+                    </button>
+
+                    <button
+                      type="button"
+                      className="link-btn secondary"
+                      onClick={handleSendOTP}
+                      disabled={loading}
+                    >
+                      Resend OTP
+                    </button>
+                  </>
+                )}
+              </form>
+            )}
+
+            {/* STEP 2: Password */}
+            {signupStep === 2 && (
+              <form onSubmit={handleCreateAccount}>
+                <div className="form-group-new">
+                  <label>Password</label>
+                  <div className="input-wrapper">
+                    <span className="input-icon">🔐</span>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      name="password"
+                      placeholder="Create a password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      required
+                    />
+                    <button
+                      type="button"
+                      className="toggle-password"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? '👁️' : '👁️‍🗨️'}
+                    </button>
+                  </div>
+                  <p className="helper-text">Minimum 6 characters</p>
+                </div>
+
+                <div className="form-group-new">
+                  <label>Confirm Password</label>
+                  <div className="input-wrapper">
+                    <span className="input-icon">🔐</span>
+                    <input
+                      type={showPassword ? 'text' : 'password'}
+                      name="confirmPassword"
+                      placeholder="Confirm your password"
+                      value={formData.confirmPassword}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <button type="submit" className="btn-primary-new" disabled={loading}>
+                  {loading ? 'Creating Account...' : 'Create Account'}
+                </button>
+              </form>
+            )}
+
+            {/* STEP 3: Success */}
+            {signupStep === 3 && (
+              <div className="success-view">
+                <div className="success-icon">✅</div>
+                <h3>Account Created!</h3>
+                <p>Welcome to PetVerse! Redirecting to login...</p>
+              </div>
+            )}
+
+            {/* Back to Login */}
+            {signupStep < 3 && (
+              <div className="form-footer">
+                <button
+                  className="link-btn"
+                  onClick={() => {
+                    setView('login');
+                    setSignupStep(1);
+                    setOtpSent(false);
+                    setFormData({ email: '', password: '', confirmPassword: '', otp: '' });
+                  }}
+                >
+                  Already have an account? Login
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* RESET PASSWORD VIEW */}
+        {view === 'reset' && (
+          <div className="form-container">
+            <h2 className="form-title">Reset Password</h2>
+            <p className="form-subtitle">We'll send you a reset link</p>
+
+            <form onSubmit={handleResetPassword}>
+              <div className="form-group-new">
+                <label>Email Address</label>
+                <div className="input-wrapper">
+                  <span className="input-icon">📧</span>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="your@email.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <button type="submit" className="btn-primary-new" disabled={loading}>
+                {loading ? 'Sending...' : 'Send Reset Link'}
+              </button>
+            </form>
+
+            <div className="form-footer">
+              <button
+                className="link-btn"
+                onClick={() => {
+                  setView('login');
+                  setFormData({ email: '', password: '', confirmPassword: '', otp: '' });
+                }}
+              >
+                Back to Login
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+);
+};
+
+export default Login;

@@ -1,0 +1,96 @@
+/* Dots Loader - For in-page loading states */
+
+.dots-loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.dots-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: #b3d4fc;
+    animation: dotPulse 1.5s infinite ease-in-out;
+}
+
+.dot:nth-child(1) {
+    animation-delay: -0.3s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: -0.15s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0s;
+}
+
+.dot:nth-child(4) {
+    animation-delay: 0.15s;
+}
+
+.dot:nth-child(5) {
+    animation-delay: 0.3s;
+}
+
+@keyframes dotPulse {
+
+    0%,
+    100% {
+        transform: scale(0.8);
+        background-color: #b3d4fc;
+        box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+
+    50% {
+        transform: scale(1.2);
+        background-color: #6793fb;
+        box-shadow: 0 0 0 8px rgba(178, 212, 252, 0);
+    }
+}
+
+.dots-loader-text {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Dark Mode */
+[data-theme="dark"] .dot {
+    background-color: #4f7cac;
+}
+
+[data-theme="dark"] .dots-loader-text {
+    color: #9ca3af;
+}
+
+@keyframes dotPulseDark {
+
+    0%,
+    100% {
+        transform: scale(0.8);
+        background-color: #4f7cac;
+        box-shadow: 0 0 0 0 rgba(79, 124, 172, 0.5);
+    }
+
+    50% {
+        transform: scale(1.2);
+        background-color: #6793fb;
+        box-shadow: 0 0 0 8px rgba(79, 124, 172, 0);
+    }
+}
+
+[data-theme="dark"] .dot {
+    animation-name: dotPulseDark;
+}

@@ -1,0 +1,847 @@
+/* ===================================================
+   HOME PAGE STYLES - PETVERSE
+   Enhanced with animations, glassmorphism & effects
+   =================================================== */
+
+/* --- 1. HERO SECTION --- */
+.hero-catchy {
+  position: relative;
+  height: 90vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-image: url('https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      rgba(139, 95, 191, 0.4) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(42, 157, 143, 0.3) 100%);
+  z-index: 1;
+}
+
+/* Floating Paw Prints */
+.floating-paws {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.floating-paw {
+  position: absolute;
+  animation: float-paw 20s infinite ease-in-out;
+  opacity: 0;
+}
+
+.paw-1 {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.paw-2 {
+  top: 20%;
+  right: 15%;
+  animation-delay: 3s;
+}
+
+.paw-3 {
+  top: 60%;
+  left: 5%;
+  animation-delay: 6s;
+}
+
+.paw-4 {
+  top: 70%;
+  right: 10%;
+  animation-delay: 9s;
+}
+
+.paw-5 {
+  top: 40%;
+  left: 20%;
+  animation-delay: 12s;
+}
+
+.paw-6 {
+  top: 80%;
+  right: 25%;
+  animation-delay: 15s;
+}
+
+@keyframes float-paw {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotate(0deg);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-30px) rotate(15deg);
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) rotate(-15deg);
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 2rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 800;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  line-height: 1.1;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, #E9C46A 50%, #E76F51 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.95;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primaryhero {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-teal) 100%);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border: none;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(42, 157, 143, 0.3);
+}
+
+.btn-primaryhero:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(42, 157, 143, 0.4);
+}
+
+.btn-primaryhero svg {
+  transition: transform 0.3s ease;
+}
+
+.btn-primaryhero:hover svg {
+  transform: rotate(15deg);
+}
+
+.btn-outlinehero {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.btn-outlinehero:hover {
+  background: white;
+  color: var(--primary);
+  border-color: white;
+  transform: translateY(-3px);
+}
+
+/* --- 2. SCROLL REVEAL ANIMATIONS --- */
+.mission-impact,
+.bento-section,
+.stories-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mission-impact.reveal-visible,
+.bento-section.reveal-visible,
+.stories-section.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- 3. MISSION IMPACT SECTION --- */
+.mission-impact {
+  padding: 7rem 5%;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mission-impact::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(42, 157, 143, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.mission-content-full {
+  max-width: 1000px;
+  width: 100%;
+  position: relative;
+}
+
+.mission-label {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent-teal);
+  letter-spacing: 4px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  background: rgba(42, 157, 143, 0.1);
+  border-radius: 50px;
+}
+
+.mission-impact h2 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+  font-weight: 800;
+}
+
+.highlight-teal {
+  color: var(--accent-teal);
+  position: relative;
+}
+
+.highlight-orange {
+  color: var(--accent-orange);
+  position: relative;
+}
+
+.mission-impact p {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  line-height: 1.8;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.impact-stats-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding-top: 2rem;
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  min-width: 180px;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.stat-number {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.color-teal {
+  color: var(--accent-teal);
+}
+
+.color-purple {
+  color: var(--primary);
+}
+
+.color-orange {
+  color: var(--accent-orange);
+}
+
+/* --- 4. BENTO GRID --- */
+.bento-section {
+  padding: 5rem 5%;
+  background: var(--bg-color);
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.bento-box {
+  position: relative;
+  height: 300px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transform-style: preserve-3d;
+}
+
+/* 3D Tilt Effect on Hover */
+.bento-box:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.box-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+.bento-box:hover .box-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.box-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  width: 100%;
+  transform: translateY(0);
+  transition: transform 0.4s ease;
+}
+
+.bento-box:hover .box-content {
+  transform: translateY(-5px);
+}
+
+.bento-box h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: white;
+  font-weight: 700;
+}
+
+.bento-box p {
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* Specific Card Layouts */
+.adopt-box {
+  background-image: url('https://images.unsplash.com/photo-1587559070757-f72a388edbba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+  grid-column: span 2;
+}
+
+.bg-adoptions {
+  background-image: url('https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+  grid-column: 2;
+}
+
+.bg-volunteer {
+  background-image: url('https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=600&q=80');
+}
+
+.bg-donate {
+  background-image: url('https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=600&q=80');
+}
+
+.bg-community {
+  background-image: url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80');
+}
+
+.bg-lostfound {
+  background-image: url('https://images.unsplash.com/photo-1606425271394-c3ca9aa1fc06?auto=format&fit=crop&w=600&q=80');
+}
+
+.bento-btn-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.bento-btn-glass:hover {
+  background: white;
+  color: #333;
+  transform: translateX(5px);
+}
+
+.bento-btn-glass svg {
+  transition: transform 0.3s ease;
+}
+
+.bento-btn-glass:hover svg {
+  transform: translateX(4px);
+}
+
+.text-link-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 2px solid var(--accent-orange);
+  padding-bottom: 2px;
+  transition: all 0.3s ease;
+}
+
+.text-link-white:hover {
+  color: var(--accent-orange);
+  border-color: transparent;
+}
+
+.text-link-white svg {
+  transition: transform 0.3s ease;
+}
+
+.text-link-white:hover svg {
+  transform: translateX(4px);
+}
+
+/* --- 5. HAPPY TALES SECTION --- */
+.stories-section {
+  padding: 5rem 2rem 6rem;
+  background-color: var(--bg-cream);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.stories-bg-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(42, 157, 143, 0.06) 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, rgba(231, 111, 81, 0.06) 0%, transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(139, 95, 191, 0.04) 0%, transparent 50%);
+  z-index: 1;
+}
+
+.stories-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.stories-title {
+  font-size: 2.8rem;
+  font-family: 'Georgia', serif;
+  color: var(--text-main);
+  margin-bottom: 3rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sparkle-icon {
+  animation: sparkle 2s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2) rotate(10deg);
+    opacity: 0.8;
+  }
+}
+
+.slider-window-modern {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.modern-story-card {
+  background: white;
+  border-radius: 24px;
+  display: flex;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 850px;
+  width: 100%;
+  min-height: 350px;
+  text-align: left;
+  transition: all 0.5s ease;
+}
+
+.modern-story-card:hover {
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.15);
+}
+
+.story-img-wrapper {
+  width: 40%;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.modern-story-card:hover .story-img-wrapper img {
+  transform: scale(1.05);
+}
+
+.story-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-orange);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.story-details {
+  width: 60%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quote-mark {
+  font-size: 4rem;
+  color: var(--accent-yellow);
+  line-height: 0.5;
+  margin-bottom: 1rem;
+  font-family: Georgia, serif;
+}
+
+.story-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.story-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+  padding-top: 1.5rem;
+}
+
+.author-info h4 {
+  font-size: 1.1rem;
+  color: var(--text-main);
+  margin: 0 0 4px 0;
+}
+
+.author-info span {
+  font-size: 0.85rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.heart-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(139, 95, 191, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.heart-icon:hover {
+  background: rgba(139, 95, 191, 0.2);
+  transform: scale(1.1);
+}
+
+.heart-icon svg {
+  transition: transform 0.3s ease;
+}
+
+.heart-icon:hover svg {
+  transform: scale(1.15);
+}
+
+.nav-btn {
+  background: white;
+  border: 1px solid #e0e0e0;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--text-main);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.nav-btn:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: scale(1.1);
+  box-shadow: 0 8px 25px rgba(139, 95, 191, 0.3);
+}
+
+.slider-dots {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  background: #bbb;
+}
+
+.dot.active {
+  background: var(--primary);
+  transform: scale(1.3);
+  box-shadow: 0 0 0 4px rgba(139, 95, 191, 0.2);
+}
+
+/* --- 6. RESPONSIVENESS --- */
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .adopt-box {
+    grid-column: span 2;
+  }
+
+  .bg-adoptions {
+    grid-column: span 2;
+  }
+
+  .modern-story-card {
+    flex-direction: column;
+  }
+
+  .story-img-wrapper {
+    width: 100%;
+    height: 250px;
+  }
+
+  .story-details {
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .nav-btn {
+    display: none;
+  }
+
+  .stat-card {
+    padding: 1.5rem 2rem;
+    min-width: 150px;
+  }
+
+  .stat-number {
+    font-size: 2.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-catchy {
+    height: 80vh;
+    background-attachment: scroll;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .adopt-box,
+  .bg-adoptions {
+    grid-column: span 1;
+  }
+
+  .mission-impact h2 {
+    font-size: 2.2rem;
+  }
+
+  .mission-impact p {
+    font-size: 1.1rem;
+  }
+}
+
+/* --- DARK MODE OVERRIDES --- */
+[data-theme='dark'] .mission-impact {
+  background: linear-gradient(180deg, #1a202c 0%, #2d3748 100%);
+}
+
+[data-theme='dark'] .mission-impact h2 {
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .mission-impact p {
+  color: #cbd5e0;
+}
+
+[data-theme='dark'] .mission-label {
+  background: rgba(42, 157, 143, 0.2);
+  color: #4fd1c5;
+}
+
+[data-theme='dark'] .glass-effect {
+  background: rgba(26, 32, 44, 0.7);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .stat-label {
+  color: #a0aec0;
+}

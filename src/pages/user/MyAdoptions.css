@@ -1,0 +1,344 @@
+/* =========================================
+   MY ADOPTIONS - "Whiskers" Theme
+   ========================================= */
+
+:root {
+  --ma-primary: #C07E60;
+  /* Terra Cotta */
+  --ma-primary-dark: #A0644B;
+  --ma-bg: #FAF9F6;
+  /* Cream Background */
+  --ma-text: #333;
+  --ma-border: #E5E7EB;
+
+  /* Status Colors */
+  --status-pending-bg: #FFF8E1;
+  --status-pending-text: #B7791F;
+  --status-accepted-bg: #DEF7EC;
+  --status-accepted-text: #03543F;
+  --status-rejected-bg: #FDE8E8;
+  --status-rejected-text: #9B1C1C;
+}
+
+.ma-page {
+  background-color: var(--ma-bg);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  padding-bottom: 4rem;
+}
+
+/* --- HERO --- */
+.ma-hero {
+  background: white;
+  padding: 3rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--ma-border);
+  margin-bottom: 3rem;
+}
+
+.ma-hero h1 {
+  font-family: var(--font-serif, serif);
+  color: var(--ma-text);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ma-hero p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* --- CONTAINER --- */
+.ma-container {
+  max-width: 1000px;
+  /* Focused width */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- LIST & CARDS --- */
+.ma-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ma-card {
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--ma-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  display: grid;
+  grid-template-columns: 200px 1fr 180px;
+  /* Image - Content - Status */
+  overflow: hidden;
+  transition: transform 0.2s;
+}
+
+.ma-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* 1. Image Section */
+.ma-card-image {
+  background: #EEE;
+  height: 100%;
+  min-height: 200px;
+}
+
+.ma-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 2. Content Section */
+.ma-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ma-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.ma-header h3 {
+  font-size: 1.4rem;
+  color: var(--ma-text);
+  margin: 0;
+  font-family: var(--font-serif);
+}
+
+.ma-date {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.ma-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 1.2rem;
+}
+
+.ma-detail-item {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.ma-detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.ma-detail-item .label {
+  font-weight: 600;
+  margin-right: 6px;
+  color: #333;
+}
+
+/* Message Box */
+.ma-message-box {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.ma-message-box.status-pending {
+  background: var(--status-pending-bg);
+  color: var(--status-pending-text);
+}
+
+.ma-message-box.status-accepted {
+  background: var(--status-accepted-bg);
+  color: var(--status-accepted-text);
+}
+
+.ma-message-box.status-rejected {
+  background: var(--status-rejected-bg);
+  color: var(--status-rejected-text);
+}
+
+/* 3. Status Section (Right Side) */
+.ma-card-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-left: 1px solid #f0f0f0;
+  background: #FAFAFA;
+}
+
+.ma-badge {
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.ma-badge.status-pending {
+  background: var(--status-pending-bg);
+  color: var(--status-pending-text);
+  border: 1px solid #FCEDA6;
+}
+
+.ma-badge.status-accepted {
+  background: var(--status-accepted-bg);
+  color: var(--status-accepted-text);
+  border: 1px solid #B4E4D3;
+}
+
+.ma-badge.status-rejected {
+  background: var(--status-rejected-bg);
+  color: var(--status-rejected-text);
+  border: 1px solid #F8B4B4;
+}
+
+/* --- LOADING & EMPTY STATES --- */
+.ma-loading {
+  text-align: center;
+  padding-top: 3rem;
+  color: var(--ma-primary);
+}
+
+.spinner-terra {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--ma-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ma-empty-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid var(--ma-border);
+}
+
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.ma-empty-state h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--ma-text);
+}
+
+.ma-empty-state p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.ma-btn-primary {
+  display: inline-block;
+  background: var(--ma-primary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.ma-btn-primary:hover {
+  background: var(--ma-primary-dark);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .ma-card {
+    grid-template-columns: 1fr;
+    /* Stack vertically */
+    grid-template-rows: 200px auto auto;
+  }
+
+  .ma-card-status {
+    border-left: none;
+    border-top: 1px solid #f0f0f0;
+    padding: 1rem;
+    justify-content: flex-start;
+  }
+}
+
+/* --- DARK MODE OVERRIDES --- */
+[data-theme='dark'] .ma-page {
+  background-color: #1a202c;
+}
+
+[data-theme='dark'] .ma-hero {
+  background: #171923;
+  border-bottom-color: #2d3748;
+}
+
+[data-theme='dark'] .ma-hero h1 {
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .ma-hero p {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .ma-card {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+[data-theme='dark'] .ma-header h3 {
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .ma-date {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .ma-detail-item {
+  color: #cbd5e0;
+}
+
+[data-theme='dark'] .ma-detail-item .label {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .ma-card-status {
+  background: #2d3748;
+  border-left-color: #4a5568;
+  border-top-color: #4a5568;
+}
+
+[data-theme='dark'] .ma-empty-state {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+[data-theme='dark'] .ma-empty-state h3 {
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .ma-empty-state p {
+  color: #a0aec0;
+}

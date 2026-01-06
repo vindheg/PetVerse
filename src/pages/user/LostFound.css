@@ -1,0 +1,541 @@
+/* =========================================
+   LOST & FOUND - Warm Theme (Terra Cotta)
+   ========================================= */
+
+:root {
+  --lf-primary: #C07E60;
+  /* Terra Cotta */
+  --lf-primary-dark: #A0644B;
+  /* Darker Earth Tone */
+  --lf-bg: #FAF9F6;
+  /* Cream */
+  --lf-text: #333;
+  --lf-border: #E5E7EB;
+  --lf-red: #E74C3C;
+  --lf-green: #27AE60;
+}
+
+.lf-page {
+  background-color: var(--lf-bg);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* --- HERO --- */
+.lf-hero {
+  background: white;
+  padding: 3rem 1rem 2rem;
+  text-align: center;
+  border-bottom: 1px solid var(--lf-border);
+  margin-bottom: 2rem;
+}
+
+.lf-hero h1 {
+  font-family: var(--font-serif, serif);
+  color: var(--lf-text);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.lf-hero p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+/* --- MAIN CONTAINER (Vertical Layout) --- */
+.lf-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  /* Stack vertically */
+  gap: 4rem;
+}
+
+/* --- SECTION 1: FORM --- */
+.lf-form-section {
+  display: flex;
+  justify-content: center;
+}
+
+.lf-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--lf-border);
+  width: 100%;
+  max-width: 700px;
+  /* Limit width so it looks good centered */
+}
+
+.centered-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.card-header h2 {
+  font-size: 1.6rem;
+  color: var(--lf-primary);
+  margin-bottom: 5px;
+}
+
+.card-header p {
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.lf-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #DDD;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #FAFAFA;
+  transition: all 0.2s;
+}
+
+.lf-input:focus {
+  outline: none;
+  border-color: var(--lf-primary);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(192, 126, 96, 0.1);
+}
+
+/* Toggle Buttons */
+.toggle-group {
+  display: flex;
+  background: #F0F0F0;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.toggle-btn {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s;
+  color: #666;
+  border: 2px solid transparent;
+}
+
+.toggle-btn input {
+  display: none;
+}
+
+.toggle-btn.active {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-btn.active.lost {
+  color: var(--lf-red);
+  border-color: var(--lf-red);
+}
+
+.toggle-btn.active.found {
+  color: var(--lf-green);
+  border-color: var(--lf-green);
+}
+
+/* Map */
+.map-wrapper {
+  background: #FFFBF8;
+  /* Warm tint */
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #EFEFEF;
+}
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.gps-btn-themed {
+  background: var(--lf-primary);
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.gps-btn-themed:hover {
+  background: var(--lf-primary-dark);
+}
+
+#leaflet-map {
+  height: 350px;
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid var(--lf-primary);
+  z-index: 1;
+}
+
+.map-help {
+  display: block;
+  margin-top: 5px;
+  color: #888;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Contact Info */
+.contact-info {
+  background: #FFF4F0;
+  /* Very light Terra Cotta */
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #FFE0D0;
+}
+
+.contact-info h4 {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: var(--lf-primary-dark);
+}
+
+.contact-info input {
+  margin-bottom: 0;
+  background: white;
+}
+
+/* Submit Button */
+.lf-submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--lf-primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.lf-submit-btn:hover {
+  background: var(--lf-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(192, 126, 96, 0.3);
+}
+
+/* --- SECTION 2: GRID LIST --- */
+.section-header h2 {
+  color: var(--lf-text);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-serif, serif);
+  font-size: 2rem;
+}
+
+.header-divider {
+  width: 60px;
+  height: 4px;
+  background: var(--lf-primary);
+  margin: 0 auto 2rem;
+  border-radius: 2px;
+}
+
+.lf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.lf-report-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--lf-border);
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.lf-report-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Badge */
+.lf-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: white;
+  z-index: 5;
+  text-transform: uppercase;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.lf-badge.lost {
+  background: var(--lf-red);
+}
+
+.lf-badge.found {
+  background: var(--lf-green);
+}
+
+/* Image */
+.lf-img-container {
+  height: 220px;
+  background: #EEE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.lf-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.lf-report-card:hover .lf-img-container img {
+  transform: scale(1.05);
+}
+
+/* Content */
+.lf-content {
+  padding: 1.5rem;
+}
+
+.lf-content h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.3rem;
+  color: #333;
+  font-weight: 700;
+  font-family: var(--font-serif);
+}
+
+.lf-meta {
+  font-size: 0.85rem;
+  color: #666;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.lf-details {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.lf-details .pill {
+  background: #FFF4F0;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  color: var(--lf-primary-dark);
+  font-weight: 600;
+}
+
+.lf-desc {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  font-style: italic;
+
+  /* Truncation Logic */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  /* Added for compatibility */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lf-contact-box {
+  background: #FAFAFA;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  border: 1px solid #EEE;
+  text-align: center;
+}
+
+.lf-contact-box a {
+  color: var(--lf-primary);
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+/* Form Validation Errors */
+.lf-input.error,
+.lf-file-input.error {
+  border-color: var(--lf-red);
+  background: #FFF5F5;
+}
+
+.error-text {
+  color: var(--lf-red);
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+}
+
+.lf-no-img {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- DARK MODE OVERRIDES --- */
+[data-theme='dark'] .lf-page {
+  background-color: #1a202c;
+}
+
+[data-theme='dark'] .lf-hero {
+  background: #171923;
+  border-bottom-color: #2d3748;
+}
+
+[data-theme='dark'] .lf-hero h1 {
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .lf-hero p {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .lf-card {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+[data-theme='dark'] .card-header h2 {
+  color: #f6ad55;
+}
+
+[data-theme='dark'] .card-header p {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .form-group label {
+  color: #cbd5e0;
+}
+
+[data-theme='dark'] .lf-input {
+  background: #1a202c;
+  border-color: #4a5568;
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .lf-input:focus {
+  border-color: #f6ad55;
+  background: #1a202c;
+}
+
+[data-theme='dark'] .toggle-group {
+  background: #1a202c;
+}
+
+[data-theme='dark'] .toggle-btn {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .toggle-btn.active {
+  background: #2d3748;
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .map-wrapper {
+  background: #1a202c;
+  border-color: #4a5568;
+}
+
+[data-theme='dark'] .contact-info {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+[data-theme='dark'] .contact-info h4 {
+  color: #f6ad55;
+}
+
+[data-theme='dark'] .contact-info input {
+  background: #1a202c;
+}
+
+[data-theme='dark'] .section-header h2 {
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .lf-report-card {
+  background: #2d3748;
+  border-color: #4a5568;
+}
+
+[data-theme='dark'] .lf-content h3 {
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .lf-meta {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .lf-details .pill {
+  background: #1a202c;
+  color: #f6ad55;
+}
+
+[data-theme='dark'] .lf-desc {
+  color: #cbd5e0;
+}
+
+[data-theme='dark'] .lf-contact-box {
+  background: #1a202c;
+  border-color: #4a5568;
+  color: #cbd5e0;
+}
+
+[data-theme='dark'] .lf-contact-box a {
+  color: #f6ad55;
+}

@@ -1,0 +1,1635 @@
+/* =========================================
+   1. GLOBAL VARIABLES ("Earth & Sky" Theme)
+   ========================================= */
+:root {
+  --primary: #8B5FBF;
+  /* Brand Purple */
+  --primary-dark: #6a3a94;
+  --text-main: #333;
+  --text-light: #555;
+  --bg-color: #f8f9fa;
+  /* Light Gray Background */
+  --bg-cream: #FFFBF5;
+  /* Warm Paper Background */
+  --white: #ffffff;
+  --radius: 16px;
+  /* Soft rounded corners */
+
+  /* Accent Colors */
+  --accent-green: #3A6B35;
+  /* Forest Green */
+  --accent-green-hover: #4C8C46;
+  --accent-teal: #2A9D8F;
+  /* Ocean Teal */
+  --accent-orange: #E76F51;
+  /* Terracotta */
+  --accent-yellow: #E9C46A;
+  /* Warm Sun */
+
+  /* Card & Surface Colors */
+  --card-bg: #ffffff;
+  --card-border: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Theme */
+[data-theme="dark"] {
+  --primary: #A78BFA;
+  --primary-dark: #8B5FBF;
+  --text-main: #E5E7EB;
+  --text-light: #9CA3AF;
+  --bg-color: #111827;
+  --bg-cream: #1F2937;
+  --white: #1F2937;
+  --card-bg: #1F2937;
+  --card-border: #374151;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+}
+
+[data-theme="dark"] .navbar {
+  background-color: #1F2937;
+  border-bottom-color: #374151;
+}
+
+[data-theme="dark"] .nav-link {
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] .nav-link:hover {
+  color: #A78BFA;
+}
+
+[data-theme="dark"] .footer-modern {
+  background-color: #1F2937;
+  border-top-color: #374151;
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .footer-col h3 {
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] .footer-links a {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] .profile-card-dropdown {
+  background: #1F2937;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .dropdown-header {
+  background-color: #111827;
+  border-bottom-color: #374151;
+}
+
+[data-theme="dark"] .dd-item {
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] .dd-item:hover {
+  background-color: #374151;
+}
+
+[data-theme="dark"] .dd-username {
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] .dd-email {
+  color: #9CA3AF;
+}
+
+/* Dark Mode - Page Backgrounds */
+[data-theme="dark"] .page-container,
+[data-theme="dark"] .login-container,
+[data-theme="dark"] .adopt-page,
+[data-theme="dark"] .community-page,
+[data-theme="dark"] .donate-page,
+[data-theme="dark"] .volunteer-page,
+[data-theme="dark"] .profile-page,
+[data-theme="dark"] .ma-page,
+[data-theme="dark"] .notif-page,
+[data-theme="dark"] .pro-page {
+  background-color: #111827;
+}
+
+/* Dark Mode - Cards */
+[data-theme="dark"] .pet-card,
+[data-theme="dark"] .donation-card,
+[data-theme="dark"] .card,
+[data-theme="dark"] .form-card,
+[data-theme="dark"] .login-box,
+[data-theme="dark"] .signup-box,
+[data-theme="dark"] .create-post-card,
+[data-theme="dark"] .discussion-card,
+[data-theme="dark"] .lost-pet-card-modern,
+[data-theme="dark"] .ma-card,
+[data-theme="dark"] .notif-card,
+[data-theme="dark"] .pro-section {
+  background-color: #1F2937;
+  border-color: #374151;
+  color: #E5E7EB;
+}
+
+/* Dark Mode - Form Inputs */
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+  background-color: #374151;
+  border-color: #4B5563;
+  color: #E5E7EB;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: #9CA3AF;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus {
+  border-color: #A78BFA;
+  outline-color: #A78BFA;
+}
+
+/* Dark Mode - Headings */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: #E5E7EB;
+}
+
+/* Dark Mode - Hero Sections */
+[data-theme="dark"] .hero-section,
+[data-theme="dark"] .community-hero-simple,
+[data-theme="dark"] .ma-hero,
+[data-theme="dark"] .notif-hero,
+[data-theme="dark"] .pro-header {
+  background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
+}
+
+/* Dark Mode - Chatbot */
+[data-theme="dark"] .chatbot-window {
+  background: #1F2937;
+  border-color: #374151;
+}
+
+[data-theme="dark"] .chatbot-messages {
+  background-color: #111827;
+}
+
+[data-theme="dark"] .message.bot {
+  background-color: #374151;
+  color: #E5E7EB;
+  border-color: #4B5563;
+}
+
+[data-theme="dark"] .chatbot-input-area {
+  background: #1F2937;
+  border-top-color: #374151;
+}
+
+[data-theme="dark"] .chatbot-input {
+  background: #374151;
+  border-color: #4B5563;
+  color: #E5E7EB;
+}
+
+/* Dark Mode - Empty States */
+[data-theme="dark"] .empty-state,
+[data-theme="dark"] .notif-empty-state,
+[data-theme="dark"] .ma-empty-state {
+  color: #9CA3AF;
+}
+
+/* =========================================
+   2. GLOBAL RESET & TYPOGRAPHY
+   ========================================= */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* =========================================
+   3. NAVBAR STYLES (Fixed Logged Out State)
+   ========================================= */
+
+.navbar {
+  background-color: white;
+  padding: 0.8rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- LOGO --- */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 60px;
+  width: auto;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* --- LINKS --- */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 1.8rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #8B5FBF;
+}
+
+/* --- RIGHT SIDE ACTIONS --- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* --- LOGIN BUTTON (The Fix for Logged Out View) --- */
+.nav-login-btn {
+  display: inline-block;
+  background-color: transparent;
+  color: #8B5FBF;
+  border: 2px solid #8B5FBF;
+  /* Purple Border */
+  padding: 8px 24px;
+  /* Size of the button */
+  border-radius: 50px;
+  /* Pill shape */
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  line-height: 1.2;
+}
+
+.nav-login-btn:hover {
+  background-color: #8B5FBF;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 95, 191, 0.2);
+}
+
+/* --- LOGGED IN STYLES --- */
+.nav-icon-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.2rem;
+  color: #8B5FBF;
+  font-weight: 700;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #8B5FBF;
+}
+
+.icon-label {
+  font-size: 1rem;
+  font-family: sans-serif;
+}
+
+.nav-avatar-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: block;
+}
+
+.nav-avatar-btn img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #8B5FBF;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.nav-avatar-btn img:hover {
+  transform: scale(1.05);
+}
+
+/* Profile Icon Button (SVG) */
+.nav-profile-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #8B5FBF;
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: #8B5FBF;
+}
+
+.nav-profile-icon:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #8B5FBF 0%, #6D4C9F 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(139, 95, 191, 0.35);
+}
+
+.nav-profile-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+[data-theme="dark"] .nav-profile-icon {
+  background: linear-gradient(135deg, #374151 0%, #4B5563 100%);
+  border-color: #A78BFA;
+  color: #A78BFA;
+}
+
+[data-theme="dark"] .nav-profile-icon:hover {
+  background: linear-gradient(135deg, #A78BFA 0%, #8B5FBF 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(167, 139, 250, 0.35);
+}
+
+/* --- DROPDOWN CARD --- */
+.user-dropdown-container {
+  position: relative;
+}
+
+.profile-card-dropdown {
+  position: absolute;
+  top: 130%;
+  right: -10px;
+  background: white;
+  min-width: 240px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #E0E0E0;
+  overflow: hidden;
+  z-index: 10001;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.dropdown-header {
+  padding: 15px 20px;
+  background-color: #F8F9FA;
+  border-bottom: 1px solid #EEE;
+  display: flex;
+  flex-direction: column;
+}
+
+.dd-username {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.dd-email {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.dropdown-body {
+  padding: 8px 0;
+}
+
+.dd-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 20px;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  font-weight: 600;
+  font-family: inherit;
+}
+
+.dd-item:hover {
+  background-color: #F5F5F5;
+}
+
+.logout-red {
+  color: #e74c3c;
+  border-top: 1px solid #F0F0F0;
+  margin-top: 5px;
+}
+
+.logout-red:hover {
+  background-color: #FFF5F5;
+  color: #c0392b;
+}
+
+.lang-select {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #DDD;
+  background: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Mobile Responsive */
+@media (max-width: 992px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-menu.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    gap: 0.5rem;
+  }
+
+  [data-theme="dark"] .nav-menu.mobile-open {
+    background: #1F2937;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
+
+@media (min-width: 993px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--primary);
+  color: white;
+  transform: rotate(15deg);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 8px;
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   4. FOOTER STYLES (Compact & Sleek)
+   ========================================= */
+.footer-modern {
+  background-color: #F9FAFB;
+  /* Reduced padding: Top was 5rem, now 3rem. Bottom was 2rem, now 1.5rem */
+  padding: 3rem 5% 1.5rem;
+  color: #4B5563;
+  border-top: 1px solid #E5E7EB;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1200px;
+  /* Reduced max-width slightly for tighter look */
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 2rem;
+  /* Reduced gap from 3rem */
+  margin-bottom: 2rem;
+  /* Reduced bottom margin */
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+  /* Reduced margin */
+}
+
+.footer-logo img {
+  width: 40px;
+  /* Smaller logo */
+  height: 40px;
+  border-radius: 50%;
+}
+
+.footer-brand-name {
+  font-size: 1.5rem;
+  /* Slightly smaller font */
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.footer-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  max-width: 300px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0.6rem;
+  /* Tighter spacing */
+  font-size: 0.9rem;
+}
+
+.contact-item a {
+  color: #4B5563;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  color: var(--primary);
+}
+
+.footer-col h3 {
+  color: #111827;
+  font-size: 1.1rem;
+  /* Smaller heading */
+  margin-bottom: 1rem;
+  /* Reduced margin */
+  font-weight: 700;
+}
+
+.footer-links li {
+  margin-bottom: 0.6rem;
+  /* Tighter list spacing */
+}
+
+.footer-links a {
+  color: #6B7280;
+  text-decoration: none;
+  font-size: 0.9rem;
+  /* Smaller link text */
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--primary);
+  padding-left: 5px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.social-btn {
+  width: 35px;
+  /* Smaller icons */
+  height: 35px;
+  background: #DDD6FE;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.social-btn:hover {
+  background: var(--primary);
+  color: var(--white);
+  transform: translateY(-3px);
+}
+
+.footer-copyright {
+  text-align: center;
+  padding-top: 1.5rem;
+  /* Reduced padding */
+  border-top: 1px solid #E5E7EB;
+  font-size: 0.85rem;
+  color: #9CA3AF;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
+  }
+
+  .footer-desc {
+    margin: 0 auto 1.5rem;
+  }
+
+  .contact-item {
+    justify-content: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+/* =========================================
+   6. CHATBOT STYLES (Global)
+   ========================================= */
+
+/* Fixed Container (Bottom Right) */
+.chatbot-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 9999;
+  font-family: var(--font-sans);
+}
+
+/* 1. Toggle Button (Floating Circle) */
+.chatbot-toggle {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary);
+  /* Terra Cotta */
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 4px 15px rgba(192, 126, 96, 0.4);
+  color: var(--white);
+  font-size: 1.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s;
+}
+
+.chatbot-toggle:hover {
+  transform: scale(1.1) rotate(10deg);
+  background-color: var(--primary-dark);
+}
+
+/* 2. Chat Window */
+.chatbot-window {
+  position: absolute;
+  bottom: 80px;
+  /* Sits above the toggle button */
+  right: 0;
+  width: 350px;
+  height: 500px;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #EEE;
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.chatbot-header {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.chatbot-header h3 {
+  font-size: 1.1rem;
+  font-family: var(--font-serif);
+  margin: 0;
+  font-weight: 700;
+}
+
+.chatbot-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background 0.2s;
+}
+
+.chatbot-close:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Messages Area */
+.chatbot-messages {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: #FAFAFA;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Scrollbar styling for messages */
+.chatbot-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+  background-color: #DDD;
+  border-radius: 10px;
+}
+
+/* Individual Bubbles */
+.message {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.message.user {
+  align-self: flex-end;
+  background-color: var(--primary);
+  color: white;
+  border-bottom-right-radius: 2px;
+  box-shadow: 0 2px 5px rgba(192, 126, 96, 0.2);
+}
+
+.message.bot {
+  align-self: flex-start;
+  background-color: white;
+  color: var(--text-main);
+  border: 1px solid #E5E7EB;
+  border-bottom-left-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+/* Input Area */
+.chatbot-input-area {
+  padding: 12px;
+  border-top: 1px solid #EEE;
+  display: flex;
+  gap: 10px;
+  background: white;
+}
+
+.chatbot-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 1px solid #DDD;
+  border-radius: 25px;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: #FAFAFA;
+  transition: all 0.2s;
+}
+
+.chatbot-input:focus {
+  border-color: var(--primary);
+  background: white;
+}
+
+.chatbot-send {
+  background: var(--primary);
+  color: white;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(192, 126, 96, 0.3);
+}
+
+.chatbot-send:hover {
+  background: var(--primary-dark);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .chatbot-window {
+    width: 300px;
+    height: 450px;
+    bottom: 90px;
+    right: 0;
+    /* Keep it aligned right, parent handles margin */
+  }
+}
+
+/* =========================================
+   5. LOGIN & SIGNUP STYLES ("Whiskers" Theme)
+   ========================================= */
+
+.login-container {
+  min-height: 100vh;
+  /* Full screen */
+  width: 100%;
+  /* Warm, earthy gradient background */
+  background: linear-gradient(135deg, #FFF4F0 0%, #FAF9F6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.login-box {
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(192, 126, 96, 0.15);
+  /* Soft brown shadow */
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  overflow: hidden;
+  min-height: 600px;
+  border: 1px solid rgba(192, 126, 96, 0.1);
+}
+
+/* Left Side (Brand/Welcome) */
+.login-left {
+  flex: 1;
+  background-color: var(--primary);
+  /* Terra Cotta #C07E60 */
+  /* Optional: Add a subtle pattern or gradient overlay */
+  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
+  color: var(--white);
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.login-left h2 {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.login-left p {
+  opacity: 0.95;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  font-family: var(--font-sans);
+}
+
+/* Right Side (Form) */
+.login-right {
+  flex: 1.2;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+}
+
+.login-right h1 {
+  text-align: center;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+}
+
+.login-subtitle {
+  text-align: center;
+  color: #888;
+  margin-bottom: 2.5rem;
+  font-family: var(--font-sans);
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #444;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #E0E0E0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: #FAFAFA;
+  font-family: var(--font-sans);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(192, 126, 96, 0.1);
+}
+
+.login-btn {
+  width: 100%;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(192, 126, 96, 0.3);
+}
+
+.login-btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.signup-link {
+  text-align: center;
+  color: #666;
+  margin-top: 2rem;
+  font-size: 0.95rem;
+}
+
+.signup-link a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-box {
+    flex-direction: column;
+    max-width: 500px;
+  }
+
+  .login-left {
+    padding: 3rem 2rem;
+    min-height: 200px;
+  }
+
+  .login-left h2 {
+    font-size: 1.8rem;
+  }
+
+  .login-right {
+    padding: 2rem;
+  }
+}
+
+/* =========================================
+   OTP MODAL STYLES (Clean Pop-up)
+   ========================================= */
+
+/* The dark background overlay */
+.otp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  /* Semi-transparent black */
+  backdrop-filter: blur(8px);
+  /* Blur effect behind the popup */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  /* Sit on top of everything */
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* The White Card */
+.otp-modal-content {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 24px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Close "X" Button */
+.otp-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: #AAA;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.otp-close-btn:hover {
+  color: #555;
+  background-color: #F5F5F5;
+  transform: scale(1.1);
+}
+
+/* Icon & Typography */
+.otp-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: #FFF4F0;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+}
+
+.otp-modal-content h2 {
+  font-family: var(--font-serif);
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.otp-modal-content p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.otp-modal-content strong {
+  color: var(--primary);
+  /* Terra Cotta */
+}
+
+/* The Big Input Field */
+.otp-input-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.otp-input-field {
+  width: 100%;
+  font-size: 2rem;
+  letter-spacing: 0.5rem;
+  text-align: center;
+  padding: 1rem;
+  border: 2px solid #E5E7EB;
+  border-radius: 12px;
+  background: #FAFAFA;
+  font-family: monospace;
+  font-weight: 700;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.otp-input-field:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(192, 126, 96, 0.1);
+}
+
+/* Resend Link */
+.otp-resend-area {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.resend-btn {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0 5px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.resend-btn:hover {
+  color: var(--color-warm-dark);
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =========================================
+   TOAST NOTIFICATION STYLES
+   (Matches src/utils/toast.js)
+   ========================================= */
+
+#toast {
+  visibility: hidden;
+  /* Hidden by default */
+  min-width: 250px;
+  max-width: 350px;
+
+  /* Text & Spacing */
+  color: #fff;
+  text-align: center;
+  border-radius: 50px;
+  /* Pill shape looks modern */
+  padding: 14px 24px;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  /* Drop shadow to separate from bg */
+
+  /* Positioning (The Fix) */
+  position: fixed;
+  z-index: 10000;
+  /* On top of everything */
+  top: 30px;
+  /* 30px from top */
+  right: 30px;
+  /* 30px from right */
+
+  /* Animation State: Hidden */
+  opacity: 0;
+  transform: translateY(-20px);
+  /* Start slightly higher */
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+/* The 'show' class is added by your JS to make it appear */
+#toast.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  /* Slide into place */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  #toast {
+    width: 90%;
+    right: 5%;
+    left: 5%;
+    top: 20px;
+    border-radius: 12px;
+  }
+}
+/* =========================================
+   POLISHED NAVBAR ACTION BUTTONS
+   ========================================= */
+
+/* Generic Action Button Base */
+.nav-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+/* Logout Button */
+.nav-logout-btn {
+  background: #FEE2E2;
+  color: #DC2626;
+  border: 1px solid #FECACA;
+}
+
+.nav-logout-btn:hover {
+  background: #DC2626;
+  color: white;
+  border-color: #DC2626;
+}
+
+.nav-logout-btn .btn-label {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .nav-logout-btn .btn-label {
+    display: none;
+  }
+  .nav-logout-btn {
+    padding: 0.5rem;
+  }
+}
+
+/* Profile Button */
+.nav-profile-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+
+.nav-profile-btn:hover {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  transform: scale(1.05);
+}
+
+.nav-profile-btn .profile-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+[data-theme=" dark\] .nav-profile-btn {
+ background: linear-gradient(135deg, #374151 0%, #4B5563 100%);
+ border-color: #A78BFA;
+ color: #A78BFA;
+}
+
+[data-theme=\dark\] .nav-profile-btn:hover {
+ background: linear-gradient(135deg, #A78BFA 0%, #8B5FBF 100%);
+ color: white;
+}
+
+/* Theme Toggle Button */
+.nav-theme-btn {
+ width: 40px;
+ height: 40px;
+ padding: 0;
+ border-radius: 50%;
+ background: transparent;
+ border: 2px solid var(--primary);
+ color: var(--primary);
+}
+
+.nav-theme-btn:hover {
+ background: var(--primary);
+ color: white;
+ transform: rotate(15deg);
+}
+
+[data-theme=\dark\] .nav-theme-btn {
+ border-color: #A78BFA;
+ color: #A78BFA;
+}
+
+[data-theme=\dark\] .nav-theme-btn:hover {
+ background: #A78BFA;
+ color: #1F2937;
+}
+
+[data-theme=\dark\] .nav-logout-btn {
+ background: rgba(220, 38, 38, 0.1);
+ color: #FCA5A5;
+ border-color: rgba(220, 38, 38, 0.3);
+}
+
+[data-theme=\dark\] .nav-logout-btn:hover {
+ background: #DC2626;
+ color: white;
+ border-color: #DC2626;
+}
+
+/* =========================================
+ IMAGE OVERFLOW FIXES
+ ========================================= */
+
+/* Ensure all images are responsive */
+img {
+ max-width: 100%;
+ height: auto;
+}
+
+/* Card image containers */
+.card-image-wrapper,
+.pet-image-container,
+.modal-image-header,
+.bento-box,
+.story-img-wrapper {
+ overflow: hidden;
+}
+
+.card-image-wrapper img,
+.pet-image-container img,
+.modal-image-header img,
+.story-img-wrapper img {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+}
+
+/* Status badge overlay for pet cards */
+.status-badge-overlay {
+ position: absolute;
+ top: 12px;
+ right: 12px;
+ background: rgba(59, 130, 246, 0.9);
+ color: white;
+ padding: 6px 12px;
+ border-radius: 20px;
+ font-size: 0.75rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: 0.5px;
+}
+
+/* =========================================
+ POLISHED BUTTON STYLES
+ ========================================= */
+
+/* Primary Button - Universal */
+.btn-primary-global {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: 0.5rem;
+ padding: 0.75rem 1.5rem;
+ background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+ color: white;
+ border: none;
+ border-radius: 10px;
+ font-weight: 600;
+ font-size: 0.95rem;
+ cursor: pointer;
+ transition: all 0.2s ease;
+ text-decoration: none;
+}
+
+.btn-primary-global:hover {
+ transform: translateY(-2px);
+ box-shadow: 0 6px 20px rgba(139, 95, 191, 0.3);
+}
+
+/* Secondary/Outline Button */
+.btn-secondary-global {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: 0.5rem;
+ padding: 0.75rem 1.5rem;
+ background: transparent;
+ color: var(--primary);
+ border: 2px solid var(--primary);
+ border-radius: 10px;
+ font-weight: 600;
+ font-size: 0.95rem;
+ cursor: pointer;
+ transition: all 0.2s ease;
+ text-decoration: none;
+}
+
+.btn-secondary-global:hover {
+ background: var(--primary);
+ color: white;
+ transform: translateY(-2px);
+}
+
+/* Form Input Polishing */
+input:not([type=\checkbox\]):not([type=\radio\]),
+textarea,
+select {
+ transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:not([type=\checkbox\]):not([type=\radio\]):hover,
+textarea:hover,
+select:hover {
+ border-color: #CBD5E1;
+}
+
+/* =========================================
+   CUSTOM DARK MODE TOGGLE SWITCH
+   ========================================= */
+
+/* The switch - the box around the slider */
+.theme-switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+  flex-shrink: 0;
+}
+
+/* Hide default HTML checkbox */
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.theme-slider {
+  --background: #28096b;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background);
+  transition: .5s;
+  border-radius: 30px;
+}
+
+.theme-slider:before {
+  position: absolute;
+  content: " \;
+ height: 1.4em;
+ width: 1.4em;
+ border-radius: 50%;
+ left: 10%;
+ bottom: 15%;
+ box-shadow: inset 8px -4px 0px 0px #fff000;
+ background: var(--background);
+ transition: .5s;
+}
+
+.theme-switch input:checked + .theme-slider {
+ background-color: #522ba7;
+}
+
+.theme-switch input:checked + .theme-slider:before {
+ transform: translateX(100%);
+ box-shadow: inset 15px -4px 0px 15px #fff000;
+}
