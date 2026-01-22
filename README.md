@@ -1,16 +1,77 @@
-# React + Vite
+# 🐾 PetVerse  
+### The Integrated Digital Ecosystem for Animal Welfare
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Abstract
+**PetVerse** is a unified digital platform designed to modernize animal welfare systems. It addresses the fragmentation and inefficiencies in current infrastructures by integrating adoption, lost & found recovery, and community support into a single scalable web application.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚨 Problem Statement
+The existing animal welfare ecosystem suffers from:
+- Manual and slow adoption processes
+- Disconnected databases leading to low pet recovery rates
+- Limited visibility and resources for shelters
+- Poor community engagement and donation tracking
 
-## React Compiler
+---
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+## 💡 Solution
+PetVerse acts as a centralized **Operating System for Pet Welfare**, streamlining workflows and enabling real-time data transparency across stakeholders such as shelters, adopters, volunteers, and donors.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎯 Core Modules
+
+### 🐶 Adoption Marketplace
+- Digitized adoption workflows
+- Transparent pet listings
+- Faster adoption turnaround
+
+### 📍 Lost & Found Tracker
+- Geospatial tracking of lost and found pets
+- Centralized recovery database
+- Improved reunion success rates
+
+### 🌍 Community Hub
+- Volunteer engagement
+- Donation and support system
+- Community announcements and updates
+
+### Chat
+- Ai powered chatbot
+---
+
+## 🚀 Innovation
+- Transforms siloed, manual systems into a unified digital ecosystem
+- Supports role-based governance
+- Scalable architecture ready for AI-driven matching and analytics
+- Enables faster adoptions and higher recovery rates
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React**
+
+### Backend
+- **Supabase (BaaS)**
+
+### Database
+- **PostgreSQL** (via Supabase)
+
+### Deployment
+- **Render**
+- **Supabase**
+
+---
+## 🧩 Architecture Overview
+- Modular and scalable design
+- Secure authentication and role-based access using Supabase
+- Centralized PostgreSQL database
+- Cloud-deployed infrastructure
+
+---
+## Find this Live 
+🔗https://petverse-frontend-wiwp.onrender.com/
+
